@@ -1,0 +1,20 @@
+version: "3.5"
+services:
+    mysql:
+        build:
+            context: ./docker
+            dockerfile: ./mysql/Dockerfile
+
+    app:
+        depends_on:
+            - mysql
+        build:
+            context: ./docker
+            dockerfile: ./php/Dockerfile
+
+    web:
+        depends_on:
+            - app
+        build:
+            context: ./docker
+            dockerfile: ./nginx/Dockerfile
