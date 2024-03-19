@@ -29,10 +29,40 @@ $ docker-compose exec app php artisan key:generate
 $ docker-compose exec app php artisan storage:link
 $ docker-compose exec app chmod -R 777 storage
 $ docker-compose exec app chmod -R 777 bootstrap/cache
+$ docker-compose exec app php artisan optimize
 ```
 
 4. Start database migration
 
 ```
 $ docker-compose exec app php artisan migrate
+```
+
+## API Usage
+
+API Endpoint:
+
+```
+http://localhost:8000/api/users
+```
+
+Headers:
+
+```
+Accept: application/json
+```
+
+Payload:
+| Key | Value (Sample) | Description |
+|-----------|------------------|-------------------|
+| firstName | John | User's first name |
+| lastName | Doe | User's last name |
+| email | johndoe@test.com | User's email |
+
+## Notification Logs
+
+Notification logs can be found on the directory:
+
+```
+storage/logs/users.log
 ```
